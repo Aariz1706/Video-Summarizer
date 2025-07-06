@@ -38,4 +38,3 @@ def upload_video():
 
 if __name__ == "__main__":
     app.run(debug = True) #Runs the python file when you type in python app.py
-
