@@ -3,7 +3,7 @@ An AI-powered tool that lets users upload a video and instantly get a clean, con
 
 ---
 ##Demo
-![Video Summarizer](./demo.png)
+![Video-Summarizer](./demo.png)
 
 ---
 ## Features
