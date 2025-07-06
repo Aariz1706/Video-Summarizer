@@ -1,56 +1,90 @@
+<!-- Declares this as an HTML5 document -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <!-- Character encoding for Unicode -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Video Summarizer</title>
+  <!-- Makes the layout responsive to screen size (mobile-friendly) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Title shown in browser tab -->
+  <title>Smart Video Summarizer</title>
+
+  <!-- Load Tailwind CSS from CDN (so we can use its utility classes) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Custom Tailwind color theme
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: "#6366F1", // Indigo
+            primary: "#6366F1", // Indigo color as 'primary'
           },
         },
       },
     };
   </script>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-4 py-10">
 
-  <!-- Header -->
-  <header class="mb-8 text-center">
-    <h1 class="text-5xl font-extrabold text-primary">Smart Video Summarizer</h1>
-    <p class="text-gray-600 mt-2 text-lg">Summarize long videos into short highlights — instantly!</p>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+  <!-- Main body styling:
+       bg-gray-100: light gray background
+       min-h-screen: full height
+       flex: flexbox layout
+       items-center: center horizontally
+       justify-center: center vertically
+       p-6: padding on all sides -->
+
+  <!-- ===== Header Section ===== -->
+  <header class="mb-10 text-center">
+    <h1 class="text-4xl font-bold text-primary">🎥 Smart Video Summarizer</h1>
+    <p class="text-gray-600 mt-2">Upload a video to get its summarized content instantly.</p>
   </header>
 
-  <!-- Upload Section -->
-  <section class="w-full max-w-xl bg-white shadow-lg rounded-xl p-6">
-    <form id="uploadForm" class="flex flex-col items-center gap-4">
-
-      <!-- File Input -->
-      <label for="videoInput" class="w-full border-2 border-dashed border-gray-300 rounded-lg p-8 text-center text-gray-500 hover:border-primary cursor-pointer transition">
-        <span class="block text-lg font-medium mb-2">Drag and drop your video here</span>
-        <span class="text-sm text-gray-400">or click to browse</span>
+  <!-- ===== Upload Form Card ===== -->
+  <section class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8">
+    <!-- Upload form starts here -->
+    <form id="uploadForm" class="flex flex-col items-center gap-5">
+      
+      <!-- Upload box -->
+      <label for="videoInput"
+        class="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center text-gray-500 hover:border-primary cursor-pointer transition">
+        <!-- Upload text -->
+        <span class="block text-lg font-medium">Click or drag a video here</span>
+        <!-- Hidden file input -->
         <input id="videoInput" type="file" accept="video/*" class="hidden" />
       </label>
 
-      <!-- Filename display -->
-      <p id="fileName" class="text-sm text-gray-600 mt-2 hidden"></p>
+      <!-- Selected file name display -->
+      <p id="fileName" class="text-sm text-gray-600 hidden"></p>
 
       <!-- Submit button -->
-      <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition">
-        Summarize Video
+      <button type="submit"
+        class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+        🔍 Summarize Video
       </button>
     </form>
 
-    <!-- Summary output will be injected here -->
-    <div id="output" class="mt-6"></div>
+    <!-- ===== Loader (hidden initially) ===== -->
+    <div id="loading" class="text-center mt-6 hidden">
+      <!-- Spinning circle loader -->
+      <div class="loader border-t-primary mx-auto mb-2 w-8 h-8 border-4 border-dashed rounded-full animate-spin"></div>
+      <p class="text-gray-600">Processing your video...</p>
+    </div>
+
+    <!-- Output (summary will be shown here) -->
+    <div id="output" class="mt-8"></div>
   </section>
 
-  <!-- Script -->
+  <!-- Custom spinner style using Tailwind-compatible class -->
+  <style>
+    .loader {
+      border-color: #ccc;
+      border-top-color: #6366F1; /* Indigo spinner top */
+    }
+  </style>
+
+  <!-- Link your JavaScript file -->
   <script src="script.js"></script>
 </body>
 </html>
