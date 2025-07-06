@@ -2,6 +2,10 @@
 An AI-powered tool that lets users upload a video and instantly get a clean, concise summary and transcription. Powered by OpenAI Whisper and Hugging Face Transformers, it's perfect for quickly understanding the key points in long videos.
 
 ---
+##Demo
+![Video Summarizer](./demo.png)
+
+---
 ## Features
 
 - Upload and analyze video files like mp-4 or mov
